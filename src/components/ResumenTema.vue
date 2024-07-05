@@ -6,7 +6,7 @@
         'bg-tertiary'
       ]"
     >
-      <img :src="image" :alt="title" class="w-full h-2/3 object-cover">
+      <img :src="image" :alt="title" class="w-full h-2/3 object-cover ">
       <div class="absolute bottom-0 left-0 right-0 p-4 bg-tertiary">
         <h3 :class="['font-semibold mb-2 text-primary', isPrincipal ? 'text-2xl' : 'text-lg']">{{ title }}</h3>
         <p :class="['text-gray-600', isPrincipal ? 'text-base' : 'text-sm']">{{ description }}</p>

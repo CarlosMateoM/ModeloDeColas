@@ -6,10 +6,7 @@
           Teoría de Colas - Objetos Virtuales de Aprendizaje
         </h2>
         <p class="text-sm mb-4 text-center">
-          Facultad de ingeniería
-        </p>
-        <p class="text-sm mb-4 text-center"> 
-          - Ingeniería de sistemas y telecomunicaciones
+          Facultad de ingeniería - Ingeniería de sistemas y telecomunicaciones
         </p>
         <p class="text-xs text-gray-400 text-center">
           &copy; {{ new Date().getFullYear() }} Todos los derechos reservados

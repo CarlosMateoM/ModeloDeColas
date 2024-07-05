@@ -102,7 +102,60 @@
                 A continuación, se presenta un ejemplo interactivo basado en el caso del centro comercial descrito.
                 Puedes ajustar los parámetros para ver cómo afectan al sistema.
             </p>
-            <!-- Aquí puedes añadir un componente interactivo o una simulación si la tienes -->
+            <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">Simulador de Cola M/M/∞</h2>
+
+                <div class="mb-6">
+                    <p class="mb-2">Este modelo simula un sistema de colas con llegadas de Poisson, tiempos de servicio
+                        exponenciales e infinitos servidores.</p>
+                    <ul class="list-disc list-inside">
+                        <li>La tasa de llegada λ es {{ arrivalRate }} por hora</li>
+                        <li>La tasa de servicio μ es {{ serviceRate }} por hora</li>
+                    </ul>
+                </div>
+
+                <div class="flex justify-center mb-6">
+                    <div class="flex items-center">
+                        <User class="text-blue-500 mr-2" />
+                        <ArrowRight class="text-gray-500 mx-2" />
+                        <div class="flex items-center">
+                            <Users class="text-green-500 mr-1" />
+                            <Infinity class="text-green-500" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Tasa de llegadas (λ)</label>
+                        <input type="number" v-model.number="arrivalRate"
+                            @input="arrivalRate = Math.max(0, arrivalRate)"
+                            class="w-full bg-white text-gray-800 p-2 rounded" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Tasa de servicio (μ)</label>
+                        <input type="number" v-model.number="serviceRate"
+                            @input="serviceRate = Math.max(0.1, serviceRate)"
+                            class="w-full bg-white text-gray-800 p-2 rounded" />
+                    </div>
+                </div>
+
+                <div class="bg-white text-gray-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2">Resultados:</h3>
+                    <p>Número medio de clientes en el sistema (L): {{ avgClientsInSystem.toFixed(2) }}</p>
+                    <p>Tiempo medio en el sistema (W): {{ (avgTimeInSystem * 60).toFixed(2) }} minutos</p>
+                    <p>Probabilidad de sistema vacío: {{ (emptySystemProb * 100).toFixed(4) }}%</p>
+                    <p>Probabilidad de exactamente 5 clientes: {{ (probExactlyNClients(5) * 100).toFixed(4) }}%</p>
+                    <p>Probabilidad de 10 o más clientes: {{ (probNOrMoreClients(10) * 100).toFixed(4) }}%</p>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-xl font-bold mb-2">Distribución de Probabilidad:</h3>
+                    <div class="h-64">
+                        <Line :data="chartData" />
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Pie de Página -->
@@ -113,5 +166,56 @@
 </template>
 
 <script setup>
-// No se necesita lógica adicional aquí
+import { ref, computed } from 'vue';
+import { User, ArrowRight, Users, Infinity } from 'lucide-vue-next';
+import { Line } from 'vue-chartjs';
+import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale)
+
+const arrivalRate = ref(30);
+const serviceRate = ref(40);
+
+const avgClientsInSystem = computed(() => arrivalRate.value / serviceRate.value);
+const avgTimeInSystem = computed(() => 1 / serviceRate.value);
+const emptySystemProb = computed(() => Math.exp(-avgClientsInSystem.value));
+
+const factorial = (n) => {
+  if (n === 0 || n === 1) return 1;
+  return n * factorial(n - 1);
+};
+
+const probExactlyNClients = (n) => {
+  const L = avgClientsInSystem.value;
+  return Math.pow(L, n) * Math.exp(-L) / factorial(n);
+};
+
+const probNOrMoreClients = (n) => {
+  let prob = 0;
+  for (let i = 0; i < n; i++) {
+    prob += probExactlyNClients(i);
+  }
+  return 1 - prob;
+};
+
+const chartData = computed(() => {
+  const labels = [];
+  const data = [];
+  const L = avgClientsInSystem.value;
+  for (let i = 0; i <= Math.min(20, Math.ceil(L * 2)); i++) {
+    labels.push(i);
+    data.push(probExactlyNClients(i));
+  }
+  return {
+    labels,
+    datasets: [
+      {
+        label: 'Probabilidad',
+        data,
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59, 130, 246, 0.5)',
+      }
+    ]
+  };
+});
 </script>

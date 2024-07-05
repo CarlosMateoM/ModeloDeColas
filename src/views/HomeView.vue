@@ -29,37 +29,44 @@
 import ResumenTema from '@/components/ResumenTema.vue';
 
 const cards = [
+{
+    id: 0,
+    image: 'public/image/imageHome/imgIntro.jpeg',
+    title: 'Teoria de colas',
+    description: 'Descripción corta 1',
+    link: '/pagina1'
+  },
   {
     id: 1,
-    image: 'ruta/a/imagen1.jpg',
+    image: 'public/image/imageHome/imgTema1.jpeg',
     title: 'Modelo de múltiples canales con llegadas Poisson, tiempos de servicio arbitrarios y sin línea de espera',
     description: 'Descripción corta 1',
     link: '/pagina1'
   },
   {
     id: 2,
-    image: 'ruta/a/imagen2.jpg',
+    image: 'public/image/imageHome/imgTema2.jpeg',
     title: 'Modelo con múltiples servidores',
     description: 'Descripción corta 2',
     link: '/pagina2'
   },
   {
     id: 3,
-    image: 'ruta/a/imagen3.jpg',
+    image: 'public/image/imageHome/imgTema3.jpeg',
     title: 'M/G/c: Llegadas Markovianas, tiempo de servicio con distribución general, c servidores.',
     description: 'Descripción corta 3',
     link: '/pagina3'
   },
   {
     id: 4,
-    image: 'ruta/a/imagen4.jpg',
+    image: 'public/image/imageHome/imgTema4.jpeg',
     title: 'G/G/c: Llegadas y tiempo de servicio con distribución general, c servidores.',
     description: 'Descripción corta 4',
     link: '/pagina4'
   },
   {
     id: 5,
-    image: 'ruta/a/imagen5.jpg',
+    image: 'public/image/imageHome/imgTema5.jpeg',
     title: 'M/M/∞: Llegadas Markovianas, tiempo de servicio exponencial, infinitos servidores.',
     description: 'Descripción corta 5',
     link: '/pagina5'

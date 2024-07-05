@@ -10,6 +10,15 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/intro',
+      redirect: { name: 'intro' }
+    },
+    {
+      path: '/teoria-de-colas',
+      name: 'intro',
+      component: () => import('../views/IntroView.vue')
+    },
+    {
       path: '/tema1',
       redirect: { name: 'tema1' }
     },
@@ -53,6 +62,15 @@ const router = createRouter({
       path: '/llegadas-markovianas-tiempo-de-servicio-exponencial-infinitos-servidores',
       name: 'tema5',
       component: () => import('../views/Tema5View.vue')
+    },
+    {
+      path: '/quiz',
+      redirect: { name: 'quiz' }
+    },
+    {
+      path: '/quiz-general-teoria-de-colas',
+      name: 'quiz',
+      component: () => import('../views/quiz.vue')
     }
   ]
 })

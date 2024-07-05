@@ -37,7 +37,7 @@ const cards = [
     image: '/image/imageHome/imgIntro.jpeg',
     title: 'Teoria de colas',
     description: 'La teoría de colas es el estudio matemático de las líneas de espera o colas, enfocándose en analizar el comportamiento y la optimización de sistemas donde hay clientes que esperan por un servicio.',
-    link: '/pagina1'
+    link: '/teoria-de-colas'
   },
   {
     id: 1,
@@ -73,6 +73,13 @@ const cards = [
     title: 'Llegadas Markovianas, tiempo de servicio exponencial, infinitos servidores (M/M/∞).',
     description: 'El modelo M/M/∞ es un sistema de colas que se caracteriza por tener llegadas que siguen un proceso de Poisson, tiempos de servicio distribuidos exponencialmente, e infinitos servidores disponibles.',
     link: '/llegadas-markovianas-tiempo-de-servicio-exponencial-infinitos-servidores'
+  },
+  {
+    id: 6,
+    image: '/image/imageHome/imgQuiz.jpeg',
+    title: 'Quiz: Modelos de la teoria de colas',
+    description: 'Realiza un quiz sobre los modelo expuesto y comprueba tus conocimientos.',
+    link: '/quiz-general-teoria-de-colas'
   }
 ];
 </script>

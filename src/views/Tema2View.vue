@@ -1,5 +1,14 @@
 <template>
     <div class="bg-tertiary text-primary min-h-screen py-8">
+
+      <div class="bg-tertiary text-primary min-h-screen py-8 relative">
+    
+    <div class="fixed left-4 top-1/2 transform -translate-y-1/2 z-50">
+      <button @click="goBack" class="bg-secondary text-primary rounded-full p-3 shadow-lg hover:bg-opacity-80 transition duration-300">
+        <
+      </button>
+    </div>
+
       <div class="container mx-auto px-4 max-w-4xl">
         <!-- Imagen de Cabecera -->
         <img class="w-full h-96 rounded object-cover mb-8" src="/image/imageHome/imgTema2.jpeg"
@@ -144,9 +153,30 @@
             
         </div>
 
-        <div class="mt-8 text-sm text-quaternary">
-            <p>© 2024 Teoría de Colas - Objetos Virtuales de Aprendizaje</p>
-        </div>
+        <div class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-quaternary">Video juego relacionado</h2>
+          <p class="mb-4">
+            Para experimentar de manera interactiva con el modelo M/M/c, recomendamos el juego "Overcooked". Este juego simula la gestión de una cocina caótica, donde debes manejar múltiples estaciones de cocina y servir a los clientes rápidamente.
+          </p>
+          <div class="bg-tertiary border-2 border-secondary p-4 rounded-lg">
+            <img src="/image/imageHome/gameTema2.jpg" alt="Overcooked" class="w-full h-64 object-cover rounded-lg mb-4">
+            <p class="mb-4">
+              En "Overcooked", experimentarás:
+            </p>
+            <ul class="list-disc list-inside mb-4">
+              <li>Múltiples estaciones de cocina (servidores)</li>
+              <li>Llegadas de pedidos (clientes) de manera aleatoria</li>
+              <li>Tiempos de preparación (servicio) variables</li>
+              <li>Gestión de colas de pedidos y priorización</li>
+            </ul>
+            <a href="https://store.epicgames.com/es-ES/p/overcooked-2" target="_blank" class="bg-secondary text-primary font-bold py-2 px-4 rounded hover:bg-opacity-80 transition duration-300">
+              Descargar Overcooked
+            </a>
+          </div>
+</div>
+
+    </div>
+    </div>
     </div>
 </template>
 <script setup>
@@ -160,6 +190,10 @@ const serviceRate = ref(4);
 const factorial = (n) => {
     if (n === 0 || n === 1) return 1;
     return n * factorial(n - 1);
+};
+
+const goBack = () => {
+  window.history.back();
 };
 
 const utilizationRate = computed(() => arrivalRate.value / (servers.value * serviceRate.value));

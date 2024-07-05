@@ -31,7 +31,7 @@ import ResumenTema from '@/components/ResumenTema.vue';
 const cards = [
 {
     id: 0,
-    image: 'public/image/imageHome/imgIntro.jpeg',
+    image: '/image/imageHome/imgIntro.jpeg',
     title: 'Teoria de colas',
     description: 'La teoría de colas es el estudio matemático de las líneas de espera o colas, enfocándose en analizar el comportamiento y la optimización de sistemas donde hay clientes que esperan por un servicio.',
     link: '/pagina1'
@@ -45,28 +45,28 @@ const cards = [
   },
   {
     id: 2,
-    image: 'public/image/imageHome/imgTema2.jpeg',
+    image: '/image/imageHome/imgTema2.jpeg',
     title: 'Modelo con múltiples servidores',
     description: 'Este modelo se utiliza para analizar sistemas donde múltiples servidores atienden a una única cola de clientes, como en centros de atención telefónica, ventanillas de banco, o sistemas de procesamiento paralelo en computación.',
     link: '/pagina2'
   },
   {
     id: 3,
-    image: 'public/image/imageHome/imgTema3.jpeg',
+    image: '/image/imageHome/imgTema3.jpeg',
     title: 'M/G/c: Llegadas Markovianas, tiempo de servicio con distribución general, c servidores.',
     description: 'En este sistema, una población infinita de clientes llegan según un proceso de Poisson con una tasa constante de llegada λ.',
     link: '/pagina3'
   },
   {
     id: 4,
-    image: 'public/image/imageHome/imgTema4.jpeg',
+    image: '/image/imageHome/imgTema4.jpeg',
     description: 'En este sistema, las llegadas de clientes tienen una distribución general G, lo que significa que los tiempos entre llegadas pueden seguir cualquier distribución de probabilidad, con una tasa media de llegadas λ.',
     title: 'G/G/c: Llegadas y tiempo de servicio con distribución general, c servidores.',
     link: '/pagina4'
   },
   {
     id: 5,
-    image: 'public/image/imageHome/imgTema5.jpeg',
+    image: '/image/imageHome/imgTema5.jpeg',
     title: 'M/M/∞: Llegadas Markovianas, tiempo de servicio exponencial, infinitos servidores.',
     description: 'El modelo M/M/∞ es un sistema de colas que se caracteriza por tener llegadas que siguen un proceso de Poisson, tiempos de servicio distribuidos exponencialmente, e infinitos servidores disponibles.',
     link: '/pagina5'

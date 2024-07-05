@@ -51,28 +51,28 @@ const cards = [
     image: '/image/imageHome/imgTema2.jpeg',
     title: 'Modelo con múltiples servidores (M/M/c).',
     description: 'Este modelo se utiliza para analizar sistemas donde múltiples servidores atienden a una única cola de clientes, como en centros de atención telefónica, ventanillas de banco, o sistemas de procesamiento paralelo en computación.',
-    link: '/pagina2'
+    link: '/modelo-con-multiples-servidores'
   },
   {
     id: 3,
     image: '/image/imageHome/imgTema3.jpeg',
     title: 'Llegadas Markovianas, tiempo de servicio con distribución general, c servidores (M/G/c).',
     description: 'En este sistema, una población infinita de clientes llegan según un proceso de Poisson con una tasa constante de llegada λ.',
-    link: '/pagina3'
+    link: '/llegadas-markovianas-tiempo-de-servicio-con-distribucion-general-c-servidores'
   },
   {
     id: 4,
     image: '/image/imageHome/imgTema4.jpeg',
     description: 'En este sistema, las llegadas de clientes tienen una distribución general G, lo que significa que los tiempos entre llegadas pueden seguir cualquier distribución de probabilidad, con una tasa media de llegadas λ.',
     title: 'Llegadas y tiempo de servicio con distribución general, c servidores (G/G/c).',
-    link: '/pagina4'
+    link: '/llegadas-y-tiempo-de-servicio-con-distribucion-general-c-servidores'
   },
   {
     id: 5,
     image: '/image/imageHome/imgTema5.jpeg',
     title: 'Llegadas Markovianas, tiempo de servicio exponencial, infinitos servidores (M/M/∞).',
     description: 'El modelo M/M/∞ es un sistema de colas que se caracteriza por tener llegadas que siguen un proceso de Poisson, tiempos de servicio distribuidos exponencialmente, e infinitos servidores disponibles.',
-    link: '/pagina5'
+    link: '/llegadas-markovianas-tiempo-de-servicio-exponencial-infinitos-servidores'
   }
 ];
 </script>

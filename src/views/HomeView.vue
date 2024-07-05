@@ -33,42 +33,42 @@ const cards = [
     id: 0,
     image: 'public/image/imageHome/imgIntro.jpeg',
     title: 'Teoria de colas',
-    description: 'Descripción corta 1',
+    description: 'La teoría de colas es el estudio matemático de las líneas de espera o colas, enfocándose en analizar el comportamiento y la optimización de sistemas donde hay clientes que esperan por un servicio.',
     link: '/pagina1'
   },
   {
     id: 1,
     image: 'public/image/imageHome/imgTema1.jpeg',
     title: 'Modelo de múltiples canales con llegadas Poisson, tiempos de servicio arbitrarios y sin línea de espera',
-    description: 'Descripción corta 1',
-    link: '/pagina1'
+    description: 'El modelo de múltiples canales con llegadas Poisson, tiempos de servicio arbitrarios y sin línea de espera, también conocido como modelo de pérdidas M/G/m/m, es una variación del modelo de colas M/M/m.',
+    link: '/modelo-de-multiples-canales-con-llegadas-poisson-tiempos-de-servicio-arbitrarios-y-sin-linea-de-espera'
   },
   {
     id: 2,
     image: 'public/image/imageHome/imgTema2.jpeg',
     title: 'Modelo con múltiples servidores',
-    description: 'Descripción corta 2',
+    description: 'Este modelo se utiliza para analizar sistemas donde múltiples servidores atienden a una única cola de clientes, como en centros de atención telefónica, ventanillas de banco, o sistemas de procesamiento paralelo en computación.',
     link: '/pagina2'
   },
   {
     id: 3,
     image: 'public/image/imageHome/imgTema3.jpeg',
     title: 'M/G/c: Llegadas Markovianas, tiempo de servicio con distribución general, c servidores.',
-    description: 'Descripción corta 3',
+    description: 'En este sistema, una población infinita de clientes llegan según un proceso de Poisson con una tasa constante de llegada λ.',
     link: '/pagina3'
   },
   {
     id: 4,
     image: 'public/image/imageHome/imgTema4.jpeg',
+    description: 'En este sistema, las llegadas de clientes tienen una distribución general G, lo que significa que los tiempos entre llegadas pueden seguir cualquier distribución de probabilidad, con una tasa media de llegadas λ.',
     title: 'G/G/c: Llegadas y tiempo de servicio con distribución general, c servidores.',
-    description: 'Descripción corta 4',
     link: '/pagina4'
   },
   {
     id: 5,
     image: 'public/image/imageHome/imgTema5.jpeg',
     title: 'M/M/∞: Llegadas Markovianas, tiempo de servicio exponencial, infinitos servidores.',
-    description: 'Descripción corta 5',
+    description: 'El modelo M/M/∞ es un sistema de colas que se caracteriza por tener llegadas que siguen un proceso de Poisson, tiempos de servicio distribuidos exponencialmente, e infinitos servidores disponibles.',
     link: '/pagina5'
   }
 ];

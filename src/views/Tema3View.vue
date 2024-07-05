@@ -80,7 +80,62 @@
             <p class="mb-4">
                 A continuación, se presenta un ejemplo interactivo basado en el caso del centro de atención al cliente descrito. Puedes ajustar los parámetros para ver cómo afectan al sistema.
             </p>
-            <!-- Aquí puedes añadir un componente interactivo o una simulación si la tienes -->
+     
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4">Simulador de Cola M/G/c</h2>
+
+                    <div class="mb-6">
+                        <p class="mb-2">Este modelo simula un sistema de colas con múltiples servidores, llegadas de
+                            Poisson y tiempos de servicio con distribución general.</p>
+                        <ul class="list-disc list-inside">
+                            <li>El sistema tiene {{ servers }} servidores</li>
+                            <li>Las llegadas siguen una distribución de Poisson con tasa λ = {{ arrivalRate }} por hora
+                            </li>
+                            <li>La tasa de servicio promedio μ es {{ serviceRate }} por hora para cada servidor</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex justify-center mb-6">
+                        <div class="flex items-center">
+                            <User class="text-blue-500 mr-2" />
+                            <ArrowRight class="text-gray-500 mx-2" />
+                            <div class="flex flex-col items-center">
+                                <Users v-for="i in servers" :key="i" class="text-green-500 my-1" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Servidores (c)</label>
+                            <input type="number" v-model.number="servers" @input="servers = Math.max(1, servers)"
+                                class="w-full bg-white text-gray-800 p-2 rounded" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Tasa de llegadas (λ)</label>
+                            <input type="number" v-model.number="arrivalRate"
+                                @input="arrivalRate = Math.max(0, arrivalRate)"
+                                class="w-full bg-white text-gray-800 p-2 rounded" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Tasa de servicio (μ)</label>
+                            <input type="number" v-model.number="serviceRate"
+                                @input="serviceRate = Math.max(0.1, serviceRate)"
+                                class="w-full bg-white text-gray-800 p-2 rounded" />
+                        </div>
+                    </div>
+
+                    <div class="bg-white text-gray-800 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold mb-2">Resultados:</h3>
+                        <p>Utilización del sistema (ρ): {{ (utilizationRate * 100).toFixed(2) }}%</p>
+                        <p>Probabilidad de sistema vacío (P0): {{ (p0 * 100).toFixed(2) }}%</p>
+                        <p>Longitud media de la cola (Lq): {{ avgQueueLength.toFixed(2) }} clientes</p>
+                        <p>Tiempo medio de espera en la cola (Wq): {{ (avgWaitTime * 60).toFixed(2) }} minutos</p>
+                        <p>Número medio de clientes en el sistema (L): {{ avgSystemLength.toFixed(2) }} clientes</p>
+                        <p>Tiempo medio en el sistema (W): {{ (avgSystemTime * 60).toFixed(2) }} minutos</p>
+                    </div>
+                </div>
+
         </div>
 
         <!-- Pie de Página -->
@@ -91,5 +146,45 @@
 </template>
 
 <script setup>
-// No se necesita lógica adicional aquí
+import { ref, computed, watch } from 'vue';
+import { User, ArrowRight, Users } from 'lucide-vue-next';
+
+const servers = ref(5);
+const arrivalRate = ref(25);
+const serviceRate = ref(6);
+
+const factorial = (n) => {
+    if (n === 0 || n === 1) return 1;
+    return n * factorial(n - 1);
+};
+
+const utilizationRate = computed(() => arrivalRate.value / (servers.value * serviceRate.value));
+
+const p0 = computed(() => {
+    const rho = utilizationRate.value;
+    let sum = 0;
+    for (let i = 0; i < servers.value; i++) {
+        sum += Math.pow(servers.value * rho, i) / factorial(i);
+    }
+    sum += (Math.pow(servers.value * rho, servers.value) / (factorial(servers.value) * (1 - rho)));
+    return 1 / sum;
+});
+
+const avgQueueLength = computed(() => {
+    const rho = utilizationRate.value;
+    return p0.value * Math.pow(arrivalRate.value / serviceRate.value, servers.value) *
+        rho / (factorial(servers.value) * Math.pow(1 - rho, 2));
+});
+
+const avgWaitTime = computed(() => avgQueueLength.value / arrivalRate.value);
+
+const avgSystemLength = computed(() => avgQueueLength.value + arrivalRate.value / serviceRate.value);
+
+const avgSystemTime = computed(() => avgWaitTime.value + 1 / serviceRate.value);
+
+watch([servers, arrivalRate, serviceRate], () => {
+    if (utilizationRate.value >= 1) {
+        alert('El sistema es inestable. La tasa de llegadas es mayor o igual a la capacidad de servicio total.');
+    }
+});
 </script>

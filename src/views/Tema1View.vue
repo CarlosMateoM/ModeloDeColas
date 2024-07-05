@@ -2,7 +2,11 @@
 
 
   <div class="bg-tertiary text-primary min-h-screen p-8">
-    <h1 class="text-4xl font-bold mb-6">Modelo de Múltiples Canales con Llegadas Poisson</h1>
+
+
+    <img  class="w-full h-96 rounded object-cover" src="/image/imageHome/imgTema1.jpeg" alt="Modelo de múltiples canales con llegadas Poisson, tiempos de servicio arbitrarios y sin línea de espera">
+
+    <h1 class="text-4xl font-bold my-6">Modelo de Múltiples Canales con Llegadas Poisson</h1>
     
     <div class="mb-8">
       <h2 class="text-2xl font-semibold mb-4 text-quaternary">Introducción</h2>

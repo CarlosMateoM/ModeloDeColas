@@ -10,27 +10,47 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/tema1',
+      redirect: { name: 'tema1' }
+    },
+    {
       path: '/modelo-de-multiples-canales-con-llegadas-poisson-tiempos-de-servicio-arbitrarios-y-sin-linea-de-espera',
       name: 'tema1',
       component: () => import('../views/Tema1View.vue')
     },
     {
-      path: '/',
+      path: '/tema2',
+      redirect: { name: 'tema2' }
+    },
+    {
+      path: '/modelo-con-multiples-servidores',
       name: 'tema2',
       component: () => import('../views/Tema2View.vue')
     },
     {
-      path: '/',
+      path: '/tema3',
+      redirect: { name: 'tema3' }
+    },
+    {
+      path: '/llegadas-markovianas-tiempo-de-servicio-con-distribucion-general-c-servidores',
       name: 'tema3',
       component: () => import('../views/Tema3View.vue')
     },
     {
-      path: '/',
+      path: '/tema4',
+      redirect: { name: 'tema4' }
+    },
+    {
+      path: '/llegadas-y-tiempo-de-servicio-con-distribucion-general-c-servidores',
       name: 'tema4',
       component: () => import('../views/Tema4View.vue')
     },
     {
-      path: '/',
+      path: '/tema5',
+      redirect: { name: 'tema5' }
+    },
+    {
+      path: '/llegadas-markovianas-tiempo-de-servicio-exponencial-infinitos-servidores',
       name: 'tema5',
       component: () => import('../views/Tema5View.vue')
     }

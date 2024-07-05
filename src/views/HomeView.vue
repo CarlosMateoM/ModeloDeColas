@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 mt-5">
     <!-- Tema principal -->
     <ResumenTema
       v-if="cards.length > 0"

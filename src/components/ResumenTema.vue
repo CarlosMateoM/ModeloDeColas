@@ -1,7 +1,7 @@
 <template>
     <div 
       :class="[
-        'relative overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-in-out hover:scale-105 hover:ring-2 hover:ring-secondary focus-within:ring-2 focus-within:ring-secondary',
+        'relative overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-in-out hover:scale-105 hover:ring-2 hover:ring-primary focus-within:ring-2 focus-within:ring-secondary',
         isPrincipal ? 'h-96' : 'h-64',
         'bg-tertiary'
       ]"

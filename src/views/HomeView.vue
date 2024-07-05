@@ -38,7 +38,7 @@ const cards = [
   },
   {
     id: 1,
-    image: 'public/image/imageHome/imgTema1.jpeg',
+    image: '/image/imageHome/imgTema1.jpeg',
     title: 'Modelo de múltiples canales con llegadas Poisson, tiempos de servicio arbitrarios y sin línea de espera',
     description: 'El modelo de múltiples canales con llegadas Poisson, tiempos de servicio arbitrarios y sin línea de espera, también conocido como modelo de pérdidas M/G/m/m, es una variación del modelo de colas M/M/m.',
     link: '/modelo-de-multiples-canales-con-llegadas-poisson-tiempos-de-servicio-arbitrarios-y-sin-linea-de-espera'
